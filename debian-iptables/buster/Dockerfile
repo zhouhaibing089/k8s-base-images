@@ -28,7 +28,12 @@ RUN clean-install \
     conntrack \
     ipset \
     kmod \
-    netbase
+    netbase \
+    dpkg=1.19.8 \
+    libc-bin=2.28-10+deb10u2 \
+    libc6=2.28-10+deb10u2 \
+    libtasn1-6=4.13-3+deb10u1 \
+    zlib1g=1:1.2.11.dfsg-1+deb10u2
 
 # Install iptables wrapper scripts to detect the correct iptables mode
 # the first time any of them is run
