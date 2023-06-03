@@ -8,7 +8,9 @@ Run the following command to build:
 
 ```console
 $ cd debian-base
-$ CONFIG=buster IMAGE_VERSION=buster-v1.9.0 make build
+$ CONFIG=buster \
+  IMAGE_VERSION=buster-v1.9.0 \
+  make build
 ```
 
 [1]: https://github.com/kubernetes/release
