@@ -56,3 +56,55 @@ jobs:
         IMAGE_VERSION=buster-v1.9.0 \
         REGISTRY=ghcr.io/zhouhaibing089/k8s/build-image \
         make all-push
+  setcap:
+    needs: debian-base
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: set up QEMU
+      uses: docker/setup-qemu-action@v2
+    - name: login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: build
+      run: |-
+        set -o errexit
+        set -o nounset
+        set -o pipefail
+
+        cd setcap
+        ONFIG=buster \
+        IMAGE_VERSION=buster-v2.0.4 \
+        DEBIAN_BASE_VERSION=buster-v1.9.0 \
+        REGISTRY=ghcr.io/zhouhaibing089/k8s/build-image \
+        make all-push
+  debian-iptables:
+    needs: debian-base
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: set up QEMU
+      uses: docker/setup-qemu-action@v2
+    - name: login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: build
+      run: |-
+        set -o errexit
+        set -o nounset
+        set -o pipefail
+
+        cd debian-iptables
+        CONFIG=buster \
+        IMAGE_VERSION=buster-v1.6.7 \
+        DEBIAN_BASE_VERSION=buster-v1.9.0
+        REGISTRY=ghcr.io/zhouhaibing089/k8s/build-image \
+        make all-push
