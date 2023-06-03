@@ -55,4 +55,4 @@ jobs:
         CONFIG=buster \
         IMAGE_VERSION=buster-v1.9.0 \
         REGISTRY=ghcr.io/zhouhaibing089/k8s/build-image \
-        make push-manifest
+        make all-push
