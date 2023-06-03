@@ -1,5 +1,10 @@
-name: build
-on: push
+name: release
+on:
+  push:
+    branches:
+    - release-1.21
+  schedule:
+  - cron: 0 9 * * *
 permissions:
   packages: write
 concurrency:
