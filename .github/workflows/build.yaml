@@ -85,7 +85,7 @@ jobs:
         DEBIAN_BASE_VERSION=buster-v1.9.0 \
         BASE_REGISTRY=ghcr.io/zhouhaibing089/k8s/build-image \
         REGISTRY=ghcr.io/zhouhaibing089/k8s/build-image \
-        make all-push
+        make all
   debian-iptables:
     needs: debian-base
     runs-on: ubuntu-latest
@@ -112,4 +112,4 @@ jobs:
         DEBIAN_BASE_VERSION=buster-v1.9.0 \
         BASE_REGISTRY=ghcr.io/zhouhaibing089/k8s/build-image \
         REGISTRY=ghcr.io/zhouhaibing089/k8s/build-image \
-        make all-push
+        make all

@@ -23,7 +23,7 @@ CONFIG ?= buster
 DEBIAN_BASE_VERSION ?= buster-v1.9.0
 
 ARCH?=amd64
-ALL_ARCH = amd64 arm arm64 ppc64le s390x
+ALL_ARCH = amd64 arm arm64
 
 BASE_REGISTRY?=k8s.gcr.io/build-image
 
@@ -46,6 +46,7 @@ build:
 	docker buildx version
 	BUILDER=$(shell docker buildx create --use)
 	docker buildx build \
+		--pull \
 		--load \
 		--platform linux/$(ARCH) \
 		-t $(IMAGE)-$(ARCH):$(IMAGE_VERSION) \
