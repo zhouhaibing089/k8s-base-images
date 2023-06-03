@@ -1,0 +1,25 @@
+name: build
+on: push
+jobs:
+  go-runner:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: set up QEMU
+      uses: docker/setup-qemu-action@v2
+    - name: build
+      run: |-
+        set -o errexit
+        set -o nounset
+        set -o pipefail
+
+        CONFIG=go1.16-buster \
+        IMAGE_VERSION=v2.3.1-go1.16.15-buster.0 \
+        GO_MAJOR_VERSION=1.16 \
+        OS_CODENAME=buster \
+        REVISION=0 \
+        GO_VERSION=1.16.15 \
+        DISTROLESS_IMAGE=static-debian10 \
+        REGISTRY=gcr.io/k8s-staging-build-image \
+        make container
