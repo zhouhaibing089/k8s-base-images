@@ -80,6 +80,7 @@ jobs:
         ONFIG=buster \
         IMAGE_VERSION=buster-v2.0.4 \
         DEBIAN_BASE_VERSION=buster-v1.9.0 \
+        BASE_REGISTRY=ghcr.io/zhouhaibing089/k8s/build-image \
         REGISTRY=ghcr.io/zhouhaibing089/k8s/build-image \
         make all-push
   debian-iptables:
@@ -105,6 +106,7 @@ jobs:
         cd debian-iptables
         CONFIG=buster \
         IMAGE_VERSION=buster-v1.6.7 \
-        DEBIAN_BASE_VERSION=buster-v1.9.0
+        DEBIAN_BASE_VERSION=buster-v1.9.0 \
+        BASE_REGISTRY=ghcr.io/zhouhaibing089/k8s/build-image \
         REGISTRY=ghcr.io/zhouhaibing089/k8s/build-image \
         make all-push
