@@ -14,6 +14,7 @@ jobs:
         set -o nounset
         set -o pipefail
 
+        cd go-runner
         CONFIG=go1.16-buster \
         IMAGE_VERSION=v2.3.1-go1.16.15-buster.0 \
         GO_MAJOR_VERSION=1.16 \
